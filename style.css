@@ -1,0 +1,166 @@
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   
+}
+body{
+   background: #000;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   min-height: 100vh;
+}
+ .div{
+   width: 200px;
+   height: 200px;
+   object-fit: cover;
+   border-radius: 50%;
+   margin: 40px auto;
+   position: relative;
+}
+.div::after,.div::before{
+   content: '';
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   height: 100%;
+   transform: translate(-50%,-50%);
+   border-radius: 50%;
+   width:100%;
+   background: conic-gradient(from var(--i), red,blue,green,yellow,purple,orange,white,red);
+   padding: 5px;
+   z-index: -1;
+   animation: spin 6s linear infinite;
+   
+}
+.div::before{
+   filter: blur(20px);
+   opacity: .5;
+}
+@property --i{
+   syntax:"<angle>";
+   initial-value:0deg;
+   inherits:false;
+}
+
+ @keyframes spin{
+   0% {
+    --i:0deg;
+      border-radius: 39% 61% 36% 64% / 58% 41% 59% 42%;
+   }
+   
+   25% {
+      border-radius: 48% 52% 24% 76% / 70% 56% 44% 30%;
+   }
+   
+   50% {
+      border-radius: 57% 43% 48% 52% / 69% 51% 49% 31%;
+   }
+   
+   75% {
+      border-radius: 41% 59% 45% 55% / 52% 54% 46% 48%;
+   }
+   
+   90% {
+      border-radius: 44% 56% 33% 67% / 63% 45% 55% 37%;
+   }
+   
+   100% {
+      border-radius: 39% 61% 36% 64% / 58% 41% 59% 42%;
+     --i:360deg;
+   }
+   
+} 
+.div img{
+   height: 100%;
+   width: 100%;
+   object-fit: cover;
+   border-radius: 50%;
+   border-radius: 39% 61% 36% 64% / 58% 41% 59% 42%;
+   animation: animate 6s linear infinite;
+}
+@keyframes animate {
+   0% {
+      border-radius: 39% 61% 36% 64% / 58% 41% 59% 42%;
+   }
+   
+   25% {
+      border-radius: 48% 52% 24% 76% / 70% 56% 44% 30%;
+   }
+   
+   50% {
+      border-radius: 57% 43% 48% 52% / 69% 51% 49% 31%;
+   }
+   
+   75% {
+      border-radius: 41% 59% 45% 55% / 52% 54% 46% 48%;
+   }
+   
+   90% {
+      border-radius: 44% 56% 33% 67% / 63% 45% 55% 37%;
+   }
+   
+   100% {
+      border-radius: 39% 61% 36% 64% / 58% 41% 59% 42%;
+   }
+}
+
+/* css scope 
+@scope (div){
+  :scope{ 
+   height: 300px;
+   width: 300px;
+   background: #fff;
+  }
+  :scope:hover{
+     background: blue;
+  }
+   p{
+      color: red;
+   }
+}
+*/
+.box{
+   height: 400px;
+   width: 290px;
+   position: relative;
+   border-radius:10px;
+   margin: 50px auto;
+   
+}
+.box::after,.box::before{
+   content: '';
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   height: 100%;
+   transform: translate(-50%,-50%);
+   width:100%;
+   background: conic-gradient(from var(--p), transparent 90%,blue);
+   padding: 5px;
+   border-radius:10px;
+   z-index: -1;
+   animation: boxanimation 5s linear infinite;
+   
+}
+@property --p{
+   syntax:"<angle>";
+   initial-value:0deg;
+   inherits:false;
+   
+}
+@keyframes boxanimation{
+   from{
+      --p:0deg;
+   }
+   to{
+      --p:360deg;
+   }
+}
+.box img{
+   height: 100%;
+   width: 100%;
+   object-fit: cover;
+   border-radius:10px;
+}

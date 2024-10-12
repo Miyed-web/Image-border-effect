@@ -1,0 +1,56 @@
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+body{
+   background: #000;
+   display:flex;
+   align-items: center;
+   justify-content: center;
+   min-height: 100vh;
+}
+.container{
+   position: relative;
+   height: 200px;
+   width: 200px;
+   border-radius: 50%;
+   
+}
+.container::before,.container::after{
+   position: absolute;
+   content: '';
+   top: 50%;
+   left: 50%;
+   height: 100%;
+   width: 100%;
+   transform: translate(-50%,-50%);
+   border-radius: 50%;
+   z-index: -1;
+   padding: 5px;
+   background: conic-gradient(from var(--i), red,blue,green,yellow,purple,orange,white,red);
+   animation: spin 3s linear infinite;
+}
+.container::before{
+   backdrop-filter: blur(10px);
+   opacity: .7;
+}
+@property --i{
+   syntax:"<angle>";
+   initial-value:0deg;
+   inherits:false;
+}
+@keyframes spin{
+   from{
+      --i:0deg;
+   }
+   to{
+      --i:360deg;
+   }
+}
+.container img{
+   height: 100%;
+   width: 100%;
+   object-fit: cover;
+   border-radius: 50%;
+}
